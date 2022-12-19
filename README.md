@@ -55,6 +55,7 @@ Obtain test repo
     # using $GEOIPS_TESTDATA_DIR and $GEOIPS_CONFIG_FILE:
     source $GEOIPS_CONFIG_FILE
     git clone $GEOIPS_REPO_URL/test_data_viirs $GEOIPS_TESTDATA_DIR/test_data_viirs
+    $GEOIPS_TESTDATA_DIR/test_data_viirs/uncompress_test_data.sh
 ```
 
 Run sample test scripts
