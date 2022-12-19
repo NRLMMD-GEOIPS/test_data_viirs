@@ -1,8 +1,8 @@
 # # # Distribution Statement A. Approved for public release. Distribution unlimited.
-# # # 
+# # #
 # # # Author:
 # # # Naval Research Laboratory, Marine Meteorology Division
-# # # 
+# # #
 # # # This program is free software: you can redistribute it and/or modify it under
 # # # the terms of the NRLMMD License included with this program. This program is
 # # # distributed WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -12,10 +12,16 @@
 
 #!/bin/bash
 
-currdir=`dirname $0`
+# NOTE: Ideally these tgz files would uncompress so the directory name matches the tgz filename.
+# If that were the case, then "uncompress_test_data.sh" would recognize the data has already been uncompressed, and
+# not attempt to uncompress again.
 
-run_procflow --procflow config_based \
-             --output_config $currdir/test_config.yaml
-config_retval=$?
+# Not going to update for now, unless it becomes an issue with repeatedly re-uncompressing the same VIIRS datasets
+# over and over again (since it works just fine at actually uncompressing).
 
-exit $((config_retval))
+testdata_dir=`dirname $0`
+
+uncompress_script=$GEOIPS_PACKAGES_DIR/geoips/tests/utils/uncompress_test_data.sh
+data_path=$testdata_dir/data
+
+$uncompress_script $data_path tgz
